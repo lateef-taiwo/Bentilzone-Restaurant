@@ -31,7 +31,11 @@ jobs:
 
             - name: Install dependencies
               run: npm install
-
+              
+              
+            - name: Update npm Packages
+              run: npm update
+            
             # - name: Run npm audit
             #   run: npm audit
             - name: Debug
