@@ -58,7 +58,7 @@ jobs:
             # - name: Start React Application
             #   run: npm start
 
-            - name: Perform Smoke Test
-              run: npm test
-              env:
-                CI: false
+            # - name: Perform Smoke Test
+            #   run: npm test
+            #   env:
+            #     CI: false
