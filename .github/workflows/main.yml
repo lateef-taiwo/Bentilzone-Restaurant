@@ -24,19 +24,32 @@ jobs:
 
             - name: Setup Node.js
               uses: actions/setup-node@v3
-            #   with:
-            #     node-version: 16
+              with:
+                node-version: 14
             #     cache: 'npm'
             #     cache-dependency-path: ./package-lock.json
 
             - name: Install dependencies
               run: npm install
 
+            - name: Run npm audit
+              run: npm audit
+            - name: Debug
+              run: |
+                echo "Node.js version: $(node --version)"
+                echo "NPM version: $(npm --version)"
+              if: always()
+
+
             # - name: Fix Vulnerability issues
             #   run: npm audit fix --force
 
-            - name: Build the application
+            - name: Run npm build
               run: npm run build
+              env:
+                CI: false
+            # - name: Build the application
+            #             run: npm run build
             
             # - name: Start React Application
             #   run: npm start
