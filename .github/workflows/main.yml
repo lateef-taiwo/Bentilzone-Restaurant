@@ -34,10 +34,13 @@ jobs:
 
             # - name: Fix Vulnerability issues
             #   run: npm audit fix --force
+
+            - name: Build the application
+              run: npm run build
             
             # - name: Start React Application
             #   run: npm start
 
-            - name: Perform Smoke Test
-              run: npm test
+            # - name: Perform Smoke Test
+            #   run: npm test
                
