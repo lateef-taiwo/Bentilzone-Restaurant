@@ -44,7 +44,7 @@ jobs:
             # - name: Fix Vulnerability issues
             #   run: npm audit fix --force
 
-            - name: Run npm build
+            - name: Build the application
               run: npm run build
               env:
                 CI: false
@@ -54,6 +54,6 @@ jobs:
             # - name: Start React Application
             #   run: npm start
 
-            # - name: Perform Smoke Test
-            #   run: npm test
+            - name: Perform Smoke Test
+              run: npm test
                
