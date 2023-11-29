@@ -56,4 +56,5 @@ jobs:
 
             - name: Perform Smoke Test
               run: npm test
-               
+              env:
+                CI: false
