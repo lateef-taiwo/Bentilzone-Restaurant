@@ -1,83 +1,65 @@
-# name: React App CICD pipeline
+name: React App CICD pipeline
 
-# # Triggers the workflow on push but only for the main branch
-# on:
-#     push:
-#         branches: 
-#             - main
+# Triggers the workflow on push but only for the main branch
+on:
+    push:
+        branches: 
+            - main
 
-#  # Allows you to run this workflow manually from the Actions tab
-#     workflow_dispatch:
+ # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
-# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# jobs:
-#     # This workflow contains a single job called "build"
-#     build:
-#       # The type of runner that the job will run on zto perform ci action
-#       runs-on: ubuntu-latest
-  
-#       # Steps represent a sequence of tasks that will be executed as part of the job
-#       steps:
-#         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#             - name: Checkout Code
-#               uses: actions/checkout@v2
-
-#             - name: Setup Node.js
-#               uses: actions/setup-node@v3
-#               with:
-#                 node-version: 14
-#             #     cache: 'npm'
-#             #     cache-dependency-path: ./package-lock.json
-
-#             - name: Install dependencies
-#               run: npm install
-              
-              
-#             - name: Update npm Packages
-#               run: npm update
-            
-#             # - name: Run npm audit
-#             #   run: npm audit
-#             - name: Debug
-#               run: |
-#                 echo "Node.js version: $(node --version)"
-#                 echo "NPM version: $(npm --version)"
-#               if: always()
-
-
-#             # - name: Fix Vulnerability issues
-#             #   run: npm audit fix --force
-
-#             - name: Build the application
-#               run: npm run build
-#               env:
-#                 CI: false
-#             # - name: Build the application
-#             #             run: npm run build
-            
-#             # - name: Start React Application
-#             #   run: npm start
-
-#             # - name: Perform Smoke Test
-#             #   run: npm test
-#             #   env:
-#             #     CI: false
-
-
-name: React App
-on: push
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    unit-testing:
-        name: Unit Testing
-        strategy:
-            matrix:
-                os: [ubuntu-latest, macos-latest, windows-latest]
-                cmd: [test]
-        runs-on: ${{matrix.os}}
-        steps: 
-            - name: Checkout
-              run: echo Code Checkout
-            - name: Install NodeJS - ${{ matrix.os}}
-              run: echo Installing NodeJS
-            - name: Run Tests
-              run: echo npm ${{ matrix.cmd }}
+    # This workflow contains a single job called "build"
+    build:
+      # The type of runner that the job will run on zto perform ci action
+      runs-on: ubuntu-latest
+  
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - name: Checkout Code
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: 14
+            #     cache: 'npm'
+            #     cache-dependency-path: ./package-lock.json
+
+            - name: Install dependencies
+              run: npm install
+              
+              
+            - name: Update npm Packages
+              run: npm update
+            
+            # - name: Run npm audit
+            #   run: npm audit
+            - name: Debug
+              run: |
+                echo "Node.js version: $(node --version)"
+                echo "NPM version: $(npm --version)"
+              if: always()
+
+
+            # - name: Fix Vulnerability issues
+            #   run: npm audit fix --force
+
+            - name: Build the application
+              run: npm run build
+              env:
+                CI: false
+            # - name: Build the application
+            #             run: npm run build
+            
+            # - name: Start React Application
+            #   run: npm start
+
+            # - name: Perform Smoke Test
+            #   run: npm test
+            #   env:
+            #     CI: false
+
